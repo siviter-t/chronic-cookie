@@ -1,0 +1,18 @@
+{
+  "name": "chronic-cookie",
+  "version": "1.0.0",
+  "description": "A set of cookie helpers for managing chronic cookie-based scenarios",
+  "scripts": {
+    "build": "tsc && rollup --config rollup.config.js && echo \"Built successfully\" && exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chronic",
+    "cookie",
+    "helper",
+    "managing",
+    "consent"
+  ],
+  "author": "Taylor Siviter",
+  "license": "MIT"
+}

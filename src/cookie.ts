@@ -58,6 +58,6 @@ export default class Cookie {
      * Gets the string representation of this cookie. I.e., the useful part for browsers ;)
      */
     public toString(): string {
-        return CookieStringBuilder.GetFullString(this);
+        return CookieStringBuilder.getFullString(this);
     }
 }

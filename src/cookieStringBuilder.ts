@@ -8,7 +8,7 @@ export default abstract class CookieStringBuilder {
      * @param key Cookie identifier
      * @param value Cookie value
      */
-    public static GetKeyValuePairString(key: string, value?: string): string {
+    public static getKeyValuePairString(key: string, value?: string): string {
         return `${key}=${value ? value : ""}; `
     }
 
@@ -16,9 +16,9 @@ export default abstract class CookieStringBuilder {
      * Gets a pre-formatted 'expires = value' string for cookies
      * @param expiryDate Date of cookie expiry
      */
-    public static GetExpiryString(expiryDate?: Date): string {
+    public static getExpiryString(expiryDate?: Date): string {
         return expiryDate
-            ? CookieStringBuilder.GetKeyValuePairString("expires", expiryDate.toUTCString())
+            ? CookieStringBuilder.getKeyValuePairString("expires", expiryDate.toUTCString())
             : "";
     }
 
@@ -26,8 +26,8 @@ export default abstract class CookieStringBuilder {
      * Gets a pre-formatted 'path = value' string for cookies
      * @param path Cookie path
      */
-    public static GetPathString(path?: string): string {
-        return CookieStringBuilder.GetKeyValuePairString("path", path ? path : "/");
+    public static getPathString(path?: string): string {
+        return CookieStringBuilder.getKeyValuePairString("path", path ? path : "/");
     }
 
     /**
@@ -35,11 +35,11 @@ export default abstract class CookieStringBuilder {
      * into a valid document.cookie string
      * @param cookie Cookie object
      */
-    public static GetFullString(cookie: Cookie): string {
+    public static getFullString(cookie: Cookie): string {
         return (
-            CookieStringBuilder.GetKeyValuePairString(cookie.key, cookie.value) +
-            CookieStringBuilder.GetExpiryString(cookie.expiry) +
-            CookieStringBuilder.GetPathString(cookie.path)
+            CookieStringBuilder.getKeyValuePairString(cookie.key, cookie.value) +
+            CookieStringBuilder.getExpiryString(cookie.expiry) +
+            CookieStringBuilder.getPathString(cookie.path)
         ).trim();
     }
 }

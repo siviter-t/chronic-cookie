@@ -1,6 +1,6 @@
 export default abstract class Logger {
 
-    public static readonly ApplicationName: string = "chronic-cookie";
+    public static readonly applicationName: string = "chronic-cookie";
 
     public static error(message: string): Error {
         return new Error(Logger.prefixFormat(message));
@@ -19,6 +19,6 @@ export default abstract class Logger {
     }
 
     private static prefixFormat(message: string): string {
-        return `<${Logger.ApplicationName}>  ${message}`;
+        return `<${Logger.applicationName}> ${message}`;
     }
 }

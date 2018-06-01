@@ -7,7 +7,7 @@ export default abstract class Manager {
      * Sets a cookie on the client browser
      * @param cookie Cookie object
      */
-    public static setCookie(cookie: Cookie): void {
+    public static set(cookie: Cookie): void {
         document.cookie = cookie.toString();
     }
 
@@ -15,7 +15,7 @@ export default abstract class Manager {
      * Returns all cookies in an array of 'key=value' strings
      * @Warning, watch out for whites
      */
-    public static getAllCookies(): string[] {
+    public static getAll(): string[] {
         return document.cookie.split(';');
     }
 
@@ -23,8 +23,8 @@ export default abstract class Manager {
      * Returns a value indicating whether a cookie of the specified key exists
      * @param cookieKey Cookie identifier
      */
-    public static checkCookie(cookieKey: string): boolean {
-        return (Manager.getAllCookies().filter((cookieString: string): boolean => {
+    public static check(cookieKey: string): boolean {
+        return (Manager.getAll().filter((cookieString: string): boolean => {
             return cookieString.indexOf(`${cookieKey}=`) >= 0
         }).length > 0);
     }
@@ -33,9 +33,9 @@ export default abstract class Manager {
      * Checks the client browser for a cookie by key and returns its value
      * @param cookieKey Cookie identifier
      */
-    public static getCookieValue(cookieKey: string): string {
+    public static getValue(cookieKey: string): string {
         let suffixedKey = `${cookieKey}=`;
-        let findResult = Manager.getAllCookies().filter((cookieString: string): boolean => {
+        let findResult = Manager.getAll().filter((cookieString: string): boolean => {
             return cookieString.indexOf(suffixedKey) >= 0
         });
 
@@ -52,8 +52,8 @@ export default abstract class Manager {
      * This is done by setting the expiry to a past date
      * @param cookie Cookie object
      */
-    public static deleteCookie(cookie: Cookie): void {
-        if (Manager.getCookieValue(cookie.key)) {
+    public static delete(cookie: Cookie): void {
+        if (Manager.getValue(cookie.key)) {
             cookie.expire();
             document.cookie = cookie.toString();
         } else {

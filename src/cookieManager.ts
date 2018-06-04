@@ -30,21 +30,22 @@ export default abstract class Manager {
     }
 
     /**
-     * Checks the client browser for a cookie by key and returns its value
+     * Checks the client browser for a cookie by key and returns its value if possible
      * @param cookieKey Cookie identifier
      */
-    public static getValue(cookieKey: string): string {
+    public static getValue(cookieKey: string): string | null {
         let suffixedKey = `${cookieKey}=`;
         let findResult = Manager.getAll().filter((cookieString: string): boolean => {
             return cookieString.indexOf(suffixedKey) >= 0
         });
 
-        if (findResult.length = 1) {
-            let cookie = findResult[0].trim();
+        if (findResult && findResult.length == 1) {
+            let cookie = findResult[0];
+            if (cookie) cookie = cookie.trim();
             return cookie.substring(suffixedKey.length, cookie.length);
         }
 
-        throw Logger.error(`Could not find ${cookieKey}`);
+        return null;
     }
 
     /**
@@ -56,8 +57,6 @@ export default abstract class Manager {
         if (Manager.getValue(cookie.key)) {
             cookie.expire();
             document.cookie = cookie.toString();
-        } else {
-            Logger.warn(`Cannot delete '${cookie.key}' as it has not been set`);
         }
     }
 }

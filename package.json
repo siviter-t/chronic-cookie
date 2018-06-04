@@ -4,6 +4,7 @@
   "description": "A set of cookie helpers for managing chronic cookie-based scenarios",
   "scripts": {
     "build": "tsc && rollup --config rollup.config.js && echo \"Built successfully\" && exit 0",
+    "minify": "uglifyjs --compress --mangle --output build/versions/chronic-cookie-1.0.0-min.js -- build/chronic-cookie.js && exit 0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,5 +15,8 @@
     "consent"
   ],
   "author": "Taylor Siviter",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "uglify-js": "^3.4.0"
+  }
 }

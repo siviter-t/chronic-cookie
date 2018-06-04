@@ -4,9 +4,23 @@
     <meta charset='UTF-8'>
     <title>Testing playground: chronic-cookie</title>
     <script src="build/chronic-cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="build/cookieConsent.css"/>
 </head>
 
 <body>
+    <script>
+        
+        ChronicCookie.CookieConsent.optInCallback = function () {
+            console.log("User (or has already) opted-in!");
+        };
+
+        ChronicCookie.CookieConsent.optOutCallback = function () {
+            console.log("User (or has already) opted-out!");
+        };
+
+        ChronicCookie.CookieConsent.go();
+
+    </script>
 </body>
 
 </html>

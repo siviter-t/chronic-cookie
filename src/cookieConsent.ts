@@ -69,13 +69,15 @@ export default abstract class CookieConsent {
      * @param cookieCallback Callback for setting any cookies if consent has been given
      */
     public static go(): void {
-        let check = CookieConsent.check();
-        if (check === null) {
-            ConsentDialog.showPassiveDialog();
-        } else if (check && CookieConsent.optInCallback) {
-            CookieConsent.optInCallback();
-        } else if (!check && CookieConsent.optOutCallback) {
-            CookieConsent.optOutCallback();
-        }
+        document.addEventListener("DOMContentLoaded", () => { 
+            let check = CookieConsent.check();
+            if (check === null) {
+                ConsentDialog.showPassiveDialog();
+            } else if (check && CookieConsent.optInCallback) {
+                CookieConsent.optInCallback();
+            } else if (!check && CookieConsent.optOutCallback) {
+                CookieConsent.optOutCallback();
+            }
+        });
     }
 }

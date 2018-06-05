@@ -1,12 +1,41 @@
 .chronic-cookie-dialog-container {
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: auto;
     left: auto;
     bottom: auto;
     right: auto;
     border-bottom: 1px solid #abb;
     box-shadow: 1px 0px 12px #899, 0px 5px 1px -5px #577 inset;
+    background: white;
+    opacity: 0.88;
+    z-index: 999;
+}
+
+.chronic-cookie-dialog-container table,
+.chronic-cookie-dialog-container table tr,
+.chronic-cookie-dialog-container table tr td {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 400px){
+    .chronic-cookie-dialog-container td {
+        display: table-row;
+    }
+
+    .chronic-cookie-dialog-container td:last-child {
+        text-align: center;
+    }
+}
+
+.chronic-cookie-dialog-container p {
+    font-size: 0.8em;
+}
+
+.chronic-cookie-dialog-container h3 {
+    font-size: 1em;
 }
 
 .chronic-cookie-dialog-title,
@@ -19,7 +48,7 @@
 .chronic-cookie-dialog-button {
     cursor: pointer;
     margin: 4px;
-    padding: 12px 16px;
+    padding: 8px 12px;
     display: inline-block;
     text-decoration: none;
     text-align: center;
@@ -28,6 +57,7 @@
     background-color: white;
     border: 1px solid #577;
     border-radius: 12px;
+    font-size: 0.8em;
 }
 
 .chronic-cookie-dialog-button:last-child {
